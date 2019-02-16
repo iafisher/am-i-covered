@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Am I Covered?</title>
+
+    <!-- CSS and JS files for the FullCalendar library -->
+    <link rel="stylesheet" href="lib/fullcalendar/fullcalendar.css" />
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/moment.min.js"></script>
+    <script src="lib/fullcalendar/fullcalendar.js"></script>
+  </head>
+  <body>
+    <h1>Am I covered?</h1>
+    <p>Please choose your provider:</p>
+
+    <input type="radio" id="radio-bcbs" value="bcbs" name="provider">
+    <label for="radio-bcbs">BlueCross BlueShield</label>
+
+    <input type="radio" id="radio-humana" value="humana" name="provider">
+    <label for="radio-humana">Humana</label>
+
+    <input type="radio" id="radio-kp" value="kp" name="provider">
+    <label for="radio-kp">Kaiser Permanente</label>
+
+    <input type="radio" id="radio-aetna" value="aetna" name="provider">
+    <label for="radio-aetna">Aetna</label>
+
+    <div id="calendar"></div>
+  </body>
+
+  <script src="index.js"></script>
+</html>
