@@ -12,6 +12,8 @@ function onload() {
     for (let radioButton of radioButtons) {
         radioButton.addEventListener("click", radioButtonListener);
     }
+
+    displayCalendar("bcbs");
 }
 
 
@@ -21,4 +23,13 @@ function radioButtonListener() {
 
 
 function displayCalendar(provider) {
+    fetchEvents(provider, (eventsJSON) => {
+        console.log(eventsJSON);
+    });
+}
+
+function fetchEvents(provider, callback) {
+    fetch("http://localhost:5000/api/events", {method: "get"}).then(response => {
+        response.json().then(callback);
+    });
 }
