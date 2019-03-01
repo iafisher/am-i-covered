@@ -4,6 +4,14 @@
   <head>
     <meta charset="utf-8" />
 
+    <!-- 
+      Our CSS is responsive, so we want to control the viewport's size and scale.
+
+      See https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag
+      for details.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Am I Covered?</title>
 
     <!-- CSS and JS files for the FullCalendar library -->
@@ -20,6 +28,7 @@
       <h1>Am I covered?</h1>
       <p>Please choose your provider:</p>
 
+      <!-- TODO: Load these dynamically from the database. -->
       <input type="radio" id="radio-bcbs" value="bcbs" name="provider">
       <label for="radio-bcbs">BlueCross BlueShield</label>
 
