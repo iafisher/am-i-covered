@@ -2,7 +2,7 @@
 
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
 
     <title>Am I Covered?</title>
 
@@ -11,26 +11,31 @@
     <script src="lib/jquery.min.js"></script>
     <script src="lib/moment.min.js"></script>
     <script src="lib/fullcalendar/fullcalendar.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <h1>Am I covered?</h1>
-    <p>Please choose your provider:</p>
+    <div id="container">
+      <h1>Am I covered?</h1>
+      <p>Please choose your provider:</p>
 
-    <input type="radio" id="radio-bcbs" value="bcbs" name="provider">
-    <label for="radio-bcbs">BlueCross BlueShield</label>
+      <input type="radio" id="radio-bcbs" value="bcbs" name="provider">
+      <label for="radio-bcbs">BlueCross BlueShield</label>
 
-    <input type="radio" id="radio-humana" value="humana" name="provider">
-    <label for="radio-humana">Humana</label>
+      <input type="radio" id="radio-humana" value="humana" name="provider">
+      <label for="radio-humana">Humana</label>
 
-    <input type="radio" id="radio-kp" value="kp" name="provider">
-    <label for="radio-kp">Kaiser Permanente</label>
+      <input type="radio" id="radio-kp" value="kp" name="provider">
+      <label for="radio-kp">Kaiser Permanente</label>
 
-    <input type="radio" id="radio-aetna" value="aetna" name="provider">
-    <label for="radio-aetna">Aetna</label>
+      <input type="radio" id="radio-aetna" value="aetna" name="provider">
+      <label for="radio-aetna">Aetna</label>
 
-    <p>If your provider is not listed, that is a likely indication that you are not covered by any nurse at the health center.</p>
+      <p>If your provider is not listed, that is a likely indication that you are not covered by any nurse at the health center.</p>
 
-    <div id="calendar"></div>
+      <div id="calendar"></div>
+    </div>
   </body>
 
   <script src="index.js"></script>

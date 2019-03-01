@@ -1,0 +1,31 @@
+h1 {
+  text-align: center;
+}
+
+#container {
+  /* Center the main container horizontally. */
+  margin: 0 auto;
+}
+
+#calendar {
+  margin-top: 30px;
+}
+
+/* Take up progressively more of the screen space as screen gets smaller. */
+@media screen and (min-width:900px) {
+  #container {
+    width: 60%
+  }
+}
+
+@media screen and (min-width:800px) and (max-width:899px) {
+  #container {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width:799px) {
+  #container {
+    width: 80%;
+  }
+}
