@@ -5,8 +5,10 @@ Run the server with `FLASK_APP=server.py flask run` (make sure your virtual envi
 is activated).
 
 Author:  Ian Fisher
-Version: February 2019
+Version: March 2019
 """
+import json
+
 from flask import Flask, jsonify
 
 
@@ -15,7 +17,14 @@ app = Flask(__name__)
 
 @app.route("/api/events/<provider>")
 def events(provider):
-    # Just return some hard-coded data for now.
-    response = jsonify([{"title": "Nurse Anna", "start": "2019-03-04", "end": "2019-03-04"}])
+    """
+    A JSON API endpoint for retrieving the appointment slots of the nurses who are
+    covered by the given health insurance provider.
+    """
+    # TODO: sqlite3 instead of JSON?
+    with open("data.json", "r") as f:
+        data = json.load(f)
+
+    response = jsonify(data.get(provider, []))
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
