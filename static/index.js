@@ -32,7 +32,7 @@ function onload() {
 function clickHandler(event, jsEvent, view) {
     const nurse = encodeURI(event.title);
     const time = encodeURI(event.start.format());
-    window.open("appointment.html?nurse=" + nurse + "&start=" + time, "_blank");
+    window.open("/appointment?nurse=" + nurse + "&start=" + time, "_blank");
 }
 
 
@@ -49,7 +49,7 @@ function displayCalendar(calendar, provider) {
 // Fetch the events that match the given provider from the back-end.
 function fetchEvents(provider, callback) {
     let opts = {method: "get"}
-    fetch("http://localhost:5000/api/events/" + provider, opts).then(response => {
+    fetch("/api/events/" + provider, opts).then(response => {
         response.json().then(callback);
     });
 }

@@ -2,5 +2,5 @@
 *.sqlite3
 __pycache__
 
-/backend/.venv
-/frontend/lib
+/.venv
+/static/lib

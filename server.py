@@ -11,13 +11,23 @@ Version: March 2019
 import json
 import sqlite3
 
-from flask import Flask, g, jsonify
+from flask import Flask, g, jsonify, render_template
 
 
 app = Flask(__name__)
 # If you change the name of the database here, you'll also have to change it in
 # createdb.py.
 DATABASE = "db.sqlite3"
+
+
+@app.route("/")
+def index_view():
+    return render_template("index.html")
+
+
+@app.route("/appointment")
+def appointments_view():
+    return render_template("appointment.html")
 
 
 @app.route("/api/events/<provider>")
