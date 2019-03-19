@@ -8,9 +8,14 @@ function onload() {
     // Initalize the JS calendar app.
     let calendarElem = $("#calendar");
     let calendar = new FullCalendar.Calendar(calendarElem, {
-        businessHours: true,
+        allDaySlot: false,
+        defaultView: "agendaWeek",
         eventClick: clickHandler,
-        plugins: ["monthGrid"],
+        height: "auto",
+        minTime: "08:00:00",
+        maxTime: "18:00:00",
+        nowIndicator: true,
+        weekends: false,
     });
     calendar.render();
 

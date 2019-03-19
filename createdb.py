@@ -58,7 +58,7 @@ with sqlite3.connect("db.sqlite3") as conn:
 
         INSERT INTO Appointments (date, start, end, nurse_id)
         VALUES (
-            "2019-03-25",
+            "2019-03-18",
             -- 10:00 to 11:00
             600,
             660, 
@@ -67,7 +67,7 @@ with sqlite3.connect("db.sqlite3") as conn:
 
         INSERT INTO Appointments (date, start, end, nurse_id)
         VALUES (
-            "2019-03-27",
+            "2019-03-20",
             -- 10:00 to 11:00
             600,
             660, 
@@ -76,7 +76,7 @@ with sqlite3.connect("db.sqlite3") as conn:
 
         INSERT INTO Appointments (date, start, end, nurse_id)
         VALUES (
-            "2019-03-29",
+            "2019-03-22",
             -- 10:00 to 11:00
             600,
             660, 
@@ -85,7 +85,7 @@ with sqlite3.connect("db.sqlite3") as conn:
 
         INSERT INTO Appointments (date, start, end, nurse_id)
         VALUES (
-            "2019-03-26",
+            "2019-03-19",
             -- 3:00 to 3:30
             900,
             930, 
@@ -94,7 +94,7 @@ with sqlite3.connect("db.sqlite3") as conn:
 
         INSERT INTO Appointments (date, start, end, nurse_id)
         VALUES (
-            "2019-03-28",
+            "2019-03-21",
             -- 3:00 to 3:30
             900,
             930, 
@@ -103,7 +103,7 @@ with sqlite3.connect("db.sqlite3") as conn:
 
         INSERT INTO Appointments (date, start, end, nurse_id)
         VALUES (
-            "2019-03-25",
+            "2019-03-18",
             -- 12:00 to 12:45
             720,
             765, 
@@ -112,7 +112,7 @@ with sqlite3.connect("db.sqlite3") as conn:
 
         INSERT INTO Appointments (date, start, end, nurse_id)
         VALUES (
-            "2019-03-27",
+            "2019-03-20",
             -- 12:00 to 12:45
             720,
             765, 
@@ -121,7 +121,7 @@ with sqlite3.connect("db.sqlite3") as conn:
 
         INSERT INTO Appointments (date, start, end, nurse_id)
         VALUES (
-            "2019-03-29",
+            "2019-03-22",
             -- 12:00 to 12:45
             720,
             765, 
