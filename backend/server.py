@@ -35,7 +35,7 @@ def events(provider):
 def get_data_db(provider):
     rows = query_db("""
         SELECT 
-            Nurses.name, Appointments.date
+            Nurses.name, Appointments.date, Appointments.start, Appointments.end
         FROM 
             Appointments
         INNER JOIN
@@ -49,8 +49,8 @@ def get_data_db(provider):
     for row in rows:
         data.append({
             "title": "Nurse " + row["name"],
-            "start": row["date"],
-            "end": row["date"],
+            "start": row["date"] + "T" + minutes_to_hours(row["start"]),
+            "end": row["date"] + "T" + minutes_to_hours(row["end"]),
         })
     return data
 
@@ -82,3 +82,7 @@ def close_connection(exception):
     db = getattr(g, "_database", None)
     if db is not None:
         db.close()
+
+
+def minutes_to_hours(minutes):
+    return "{}:{:0>2}".format(*divmod(minutes, 60))
