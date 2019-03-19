@@ -44,9 +44,9 @@ def events(provider):
 
 def get_data_db(provider):
     rows = query_db("""
-        SELECT 
+        SELECT
             Nurses.name, Appointments.date, Appointments.start, Appointments.end
-        FROM 
+        FROM
             Appointments
         INNER JOIN
             Nurses ON Appointments.nurse_id = Nurses.id
