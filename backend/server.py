@@ -26,13 +26,39 @@ def events(provider):
     A JSON API endpoint for retrieving the appointment slots of the nurses who are
     covered by the given health insurance provider.
     """
-    # TODO: sqlite3 instead of JSON?
-    with open("data.json", "r") as f:
-        data = json.load(f)
-
-    response = jsonify(data.get(provider, []))
+    data = get_data_db(provider)
+    response = jsonify(data)
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
+
+
+def get_data_db(provider):
+    rows = query_db("""
+        SELECT 
+            Nurses.name, Appointments.date
+        FROM 
+            Appointments
+        INNER JOIN
+            Nurses ON Appointments.nurse_id = Nurses.id
+        WHERE
+            Nurses.providers LIKE ?
+        ;
+    """, ("%" + provider + "%",))
+
+    data = []
+    for row in rows:
+        data.append({
+            "title": "Nurse " + row["name"],
+            "start": row["date"],
+            "end": row["date"],
+        })
+    return data
+
+
+def get_data_json(provider):
+    with open("data.json", "r") as f:
+        data = json.load(f)
+    return data.get(provider, [])
 
 
 def get_db():
