@@ -16,19 +16,16 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
+if "DJANGO_DEBUG_FALSE" in os.environ:
+    DEBUG = False
+    SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
+    ALLOWED_HOSTS = [os.environ["DJANGO_SITENAME"]]
+else:
+    DEBUG = True
+    # Insecure secret key for local development.
+    SECRET_KEY = "09pv^o($1tiwcue@+!!9fosdfh%+7btrtbei^_1u9lc2^!b%pk"
+    ALLOWED_HOSTS = []
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "09pv^o($1tiwcue@+!!9fosdfh%+7btrtbei^_1u9lc2^!b%pk"
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
-# Application definition
 
 INSTALLED_APPS = [
     "coverage_app.apps.CoverageAppConfig",
