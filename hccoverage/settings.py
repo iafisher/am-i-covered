@@ -131,9 +131,19 @@ LOGGING = {
             "maxBytes": 100000,
             "backupCount": 5,
             "formatter": "verbose",
-        }
+        },
+        "django_file": {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": os.path.join(BASE_DIR, "logs", "django.log"),
+            # Ensures that there is never more than 500 KB of logs on the server.
+            "maxBytes": 100000,
+            "backupCount": 5,
+            "formatter": "verbose",
+        },
     },
     "loggers": {
-        "main": {"handlers": ["file"], "level": "DEBUG", "propagate": True}
+        "main": {"handlers": ["file"], "level": "DEBUG", "propagate": True},
+        "django": {"handlers": ["django_file"], "level": "DEBUG", "propagate": True},
     },
 }
