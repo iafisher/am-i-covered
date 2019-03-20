@@ -120,7 +120,11 @@ LOGGING = {
         "verbose": {
             "format": "[{levelname}] {asctime} {pathname}: {message}",
             "style": "{",
-        }
+        },
+        "django_fmt": {
+            "format": "[{levelname}] {asctime} {message}",
+            "style": "{",
+        },
     },
     "handlers": {
         "file": {
@@ -133,13 +137,13 @@ LOGGING = {
             "formatter": "verbose",
         },
         "django_file": {
-            "level": "DEBUG",
+            "level": "WARNING",
             "class": "logging.handlers.RotatingFileHandler",
             "filename": os.path.join(BASE_DIR, "logs", "django.log"),
             # Ensures that there is never more than 500 KB of logs on the server.
             "maxBytes": 100000,
             "backupCount": 5,
-            "formatter": "verbose",
+            "formatter": "django_fmt",
         },
     },
     "loggers": {
