@@ -1,6 +1,9 @@
 "use strict";
 
 
+const BASE_URL = "/demos/am-i-covered/";
+
+
 onload();
 
 
@@ -37,7 +40,7 @@ function onload() {
 function clickHandler(event, jsEvent, view) {
     const nurse = encodeURI(event.title);
     const time = encodeURI(event.start.format());
-    window.open("/appointment?nurse=" + nurse + "&start=" + time, "_blank");
+    window.open(BASE_URL + "appointment?nurse=" + nurse + "&start=" + time, "_blank");
 }
 
 
@@ -54,7 +57,7 @@ function displayCalendar(calendar, provider) {
 // Fetch the events that match the given provider from the back-end.
 function fetchEvents(provider, callback) {
     let opts = {method: "get"}
-    fetch("/demos/am-i-covered/api/events/" + provider, opts).then(response => {
+    fetch(BASE_URL + "api/events/" + provider, opts).then(response => {
         response.json().then(callback);
     });
 }
