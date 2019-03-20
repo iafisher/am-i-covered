@@ -6,3 +6,4 @@ __pycache__
 /coverage_app/static/coverage_app/lib
 /deploy_tools
 /static_collected
+/logs/*.log

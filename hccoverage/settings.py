@@ -111,3 +111,29 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static_collected")
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "[{levelname}] {asctime} {pathname}: {message}",
+            "style": "{",
+        }
+    },
+    "handlers": {
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": os.path.join(BASE_DIR, "logs", "debug.log"),
+            # Ensures that there is never more than 500 KB of logs on the server.
+            "maxBytes": 100000,
+            "backupCount": 5,
+            "formatter": "verbose",
+        }
+    },
+    "loggers": {
+        "main": {"handlers": ["file"], "level": "DEBUG", "propagate": True}
+    },
+}
