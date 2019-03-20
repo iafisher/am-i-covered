@@ -54,7 +54,7 @@ function displayCalendar(calendar, provider) {
 // Fetch the events that match the given provider from the back-end.
 function fetchEvents(provider, callback) {
     let opts = {method: "get"}
-    fetch("/api/events/" + provider, opts).then(response => {
+    fetch("/demos/am-i-covered/api/events/" + provider, opts).then(response => {
         response.json().then(callback);
     });
 }
