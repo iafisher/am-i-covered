@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 h1 {
   text-align: center;
 }
@@ -11,20 +15,27 @@ h1 {
   margin-top: 30px;
 }
 
+/* Make radio buttons stack on smaller screens. */
+@media screen and (min-width: 1000px) {
+  .radio-group {
+    display: inline-block;
+  }
+}
+
 /* Take up progressively more of the screen space as screen gets smaller. */
-@media screen and (min-width:900px) {
+@media screen and (min-width: 900px) {
   #container {
     width: 60%
   }
 }
 
-@media screen and (min-width:800px) and (max-width:899px) {
+@media screen and (min-width: 800px) and (max-width: 899px) {
   #container {
     width: 70%;
   }
 }
 
-@media screen and (max-width:799px) {
+@media screen and (max-width: 799px) {
   #container {
     width: 80%;
   }

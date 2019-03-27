@@ -10,17 +10,39 @@ onload();
 function onload() {
     // Initalize the JS calendar app.
     let calendarElem = $("#calendar");
-    let calendar = new FullCalendar.Calendar(calendarElem, {
+    let options = {
         allDaySlot: false,
-        defaultView: "agendaWeek",
         eventClick: clickHandler,
         height: "auto",
         minTime: "08:00:00",
         maxTime: "18:00:00",
         nowIndicator: true,
+        views: {
+            agendaThreeDay: {
+                type: "agenda",
+                duration: { days: 3 },
+                buttonText: "3 day",
+            },
+        },
         weekends: false,
-    });
+    };
+    if (!smallWindow()) {
+        options["defaultView"] = "agendaWeek";
+    } else {
+        // Display a three-day calendar on smaller devices.
+        options["defaultView"] = "agendaThreeDay";
+        options["scrollTime"] = "12:00:00";
+    }
+    let calendar = new FullCalendar.Calendar(calendarElem, options);
     calendar.render();
+
+    window.addEventListener("resize", function (event) {
+        if (smallWindow() && calendar.getView().name === "agendaWeek") {
+            calendar.changeView("agendaThreeDay");
+        } else if (!smallWindow() && calendar.getView().name !== "agendaWeek") {
+            calendar.changeView("agendaWeek");
+        }
+    });
 
     // Attach the event listener to every radio button.
     let radioButtons = document.querySelectorAll("input[type='radio']");
@@ -51,6 +73,11 @@ function displayCalendar(calendar, provider) {
         calendar.addEventSource(eventsJSON);
         calendar.render();
     });
+}
+
+
+function smallWindow() {
+    return window.innerWidth <= 600;
 }
 
 
