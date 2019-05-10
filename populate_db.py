@@ -1,8 +1,20 @@
+"""
+Populate the database with sample nurses and appointment slots.
+
+Run with your virtual environment activated:
+
+  python3 populate_db.py
+
+
+Author:  Ian Fisher (iafisher@protonmail.com)
+Version: May 2019
+"""
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "hccoverage.settings")
 import django
 django.setup()
 
+import datetime
 from coverage_app.models import Appointment, Nurse, Provider
 
 
@@ -25,25 +37,23 @@ bcbs.nurses.add(anna, yasmine)
 humana.nurses.add(anna, richard)
 kp.nurses.add(yasmine)
 
+# Create appointments for every week in 2019, starting the week of March 18.
+monday = datetime.date(2019, 3, 18)
+while monday.year == 2019:
+    tuesday = monday + datetime.timedelta(1)
+    wednesday = monday + datetime.timedelta(2)
+    thursday = monday + datetime.timedelta(3)
+    friday = monday + datetime.timedelta(4)
 
-Appointment.objects.create(date="2019-03-18", start=600, end=660, nurse=anna)
-Appointment.objects.create(date="2019-03-20", start=600, end=660, nurse=anna)
-Appointment.objects.create(date="2019-03-22", start=600, end=660, nurse=anna)
+    Appointment.objects.create(date=monday.isoformat(), start=600, end=660, nurse=anna)
+    Appointment.objects.create(date=wednesday.isoformat(), start=600, end=660, nurse=anna)
+    Appointment.objects.create(date=friday.isoformat(), start=600, end=660, nurse=anna)
 
-Appointment.objects.create(date="2019-03-19", start=900, end=930, nurse=richard)
-Appointment.objects.create(date="2019-03-21", start=900, end=930, nurse=richard)
+    Appointment.objects.create(date=tuesday.isoformat(), start=900, end=930, nurse=richard)
+    Appointment.objects.create(date=thursday.isoformat(), start=900, end=930, nurse=richard)
 
-Appointment.objects.create(date="2019-03-18", start=720, end=765, nurse=yasmine)
-Appointment.objects.create(date="2019-03-20", start=720, end=765, nurse=yasmine)
-Appointment.objects.create(date="2019-03-22", start=720, end=765, nurse=yasmine)
+    Appointment.objects.create(date=monday.isoformat(), start=720, end=765, nurse=yasmine)
+    Appointment.objects.create(date=wednesday.isoformat(), start=720, end=765, nurse=yasmine)
+    Appointment.objects.create(date=friday.isoformat(), start=720, end=765, nurse=yasmine)
 
-Appointment.objects.create(date="2019-03-25", start=600, end=660, nurse=anna)
-Appointment.objects.create(date="2019-03-27", start=600, end=660, nurse=anna)
-Appointment.objects.create(date="2019-03-29", start=600, end=660, nurse=anna)
-
-Appointment.objects.create(date="2019-03-26", start=900, end=930, nurse=richard)
-Appointment.objects.create(date="2019-03-28", start=900, end=930, nurse=richard)
-
-Appointment.objects.create(date="2019-03-25", start=720, end=765, nurse=yasmine)
-Appointment.objects.create(date="2019-03-27", start=720, end=765, nurse=yasmine)
-Appointment.objects.create(date="2019-03-29", start=720, end=765, nurse=yasmine)
+    monday = monday + datetime.timedelta(7)
